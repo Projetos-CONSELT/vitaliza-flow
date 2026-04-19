@@ -9,38 +9,153 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppServicosRouteImport } from './routes/_app/servicos'
+import { Route as AppRelatoriosRouteImport } from './routes/_app/relatorios'
+import { Route as AppProfissionaisRouteImport } from './routes/_app/profissionais'
+import { Route as AppPacientesRouteImport } from './routes/_app/pacientes'
+import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
+import { Route as AppConfiguracoesRouteImport } from './routes/_app/configuracoes'
+import { Route as AppAgendaIndexRouteImport } from './routes/_app/agenda/index'
+import { Route as AppAgendaNovoRouteImport } from './routes/_app/agenda/novo'
 
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppServicosRoute = AppServicosRouteImport.update({
+  id: '/servicos',
+  path: '/servicos',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRelatoriosRoute = AppRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfissionaisRoute = AppProfissionaisRouteImport.update({
+  id: '/profissionais',
+  path: '/profissionais',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPacientesRoute = AppPacientesRouteImport.update({
+  id: '/pacientes',
+  path: '/pacientes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAgendaIndexRoute = AppAgendaIndexRouteImport.update({
+  id: '/agenda/',
+  path: '/agenda/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAgendaNovoRoute = AppAgendaNovoRouteImport.update({
+  id: '/agenda/novo',
+  path: '/agenda/novo',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/configuracoes': typeof AppConfiguracoesRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/pacientes': typeof AppPacientesRoute
+  '/profissionais': typeof AppProfissionaisRoute
+  '/relatorios': typeof AppRelatoriosRoute
+  '/servicos': typeof AppServicosRoute
+  '/agenda/novo': typeof AppAgendaNovoRoute
+  '/agenda/': typeof AppAgendaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/configuracoes': typeof AppConfiguracoesRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/pacientes': typeof AppPacientesRoute
+  '/profissionais': typeof AppProfissionaisRoute
+  '/relatorios': typeof AppRelatoriosRoute
+  '/servicos': typeof AppServicosRoute
+  '/agenda/novo': typeof AppAgendaNovoRoute
+  '/agenda': typeof AppAgendaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/configuracoes': typeof AppConfiguracoesRoute
+  '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/pacientes': typeof AppPacientesRoute
+  '/_app/profissionais': typeof AppProfissionaisRoute
+  '/_app/relatorios': typeof AppRelatoriosRoute
+  '/_app/servicos': typeof AppServicosRoute
+  '/_app/agenda/novo': typeof AppAgendaNovoRoute
+  '/_app/agenda/': typeof AppAgendaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/configuracoes'
+    | '/dashboard'
+    | '/pacientes'
+    | '/profissionais'
+    | '/relatorios'
+    | '/servicos'
+    | '/agenda/novo'
+    | '/agenda/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/configuracoes'
+    | '/dashboard'
+    | '/pacientes'
+    | '/profissionais'
+    | '/relatorios'
+    | '/servicos'
+    | '/agenda/novo'
+    | '/agenda'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/_app/configuracoes'
+    | '/_app/dashboard'
+    | '/_app/pacientes'
+    | '/_app/profissionais'
+    | '/_app/relatorios'
+    | '/_app/servicos'
+    | '/_app/agenda/novo'
+    | '/_app/agenda/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +163,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/servicos': {
+      id: '/_app/servicos'
+      path: '/servicos'
+      fullPath: '/servicos'
+      preLoaderRoute: typeof AppServicosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/relatorios': {
+      id: '/_app/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof AppRelatoriosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/profissionais': {
+      id: '/_app/profissionais'
+      path: '/profissionais'
+      fullPath: '/profissionais'
+      preLoaderRoute: typeof AppProfissionaisRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/pacientes': {
+      id: '/_app/pacientes'
+      path: '/pacientes'
+      fullPath: '/pacientes'
+      preLoaderRoute: typeof AppPacientesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/dashboard': {
+      id: '/_app/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/configuracoes': {
+      id: '/_app/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AppConfiguracoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/agenda/': {
+      id: '/_app/agenda/'
+      path: '/agenda'
+      fullPath: '/agenda/'
+      preLoaderRoute: typeof AppAgendaIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/agenda/novo': {
+      id: '/_app/agenda/novo'
+      path: '/agenda/novo'
+      fullPath: '/agenda/novo'
+      preLoaderRoute: typeof AppAgendaNovoRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppConfiguracoesRoute: typeof AppConfiguracoesRoute
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppPacientesRoute: typeof AppPacientesRoute
+  AppProfissionaisRoute: typeof AppProfissionaisRoute
+  AppRelatoriosRoute: typeof AppRelatoriosRoute
+  AppServicosRoute: typeof AppServicosRoute
+  AppAgendaNovoRoute: typeof AppAgendaNovoRoute
+  AppAgendaIndexRoute: typeof AppAgendaIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppConfiguracoesRoute: AppConfiguracoesRoute,
+  AppDashboardRoute: AppDashboardRoute,
+  AppPacientesRoute: AppPacientesRoute,
+  AppProfissionaisRoute: AppProfissionaisRoute,
+  AppRelatoriosRoute: AppRelatoriosRoute,
+  AppServicosRoute: AppServicosRoute,
+  AppAgendaNovoRoute: AppAgendaNovoRoute,
+  AppAgendaIndexRoute: AppAgendaIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import logo from "@/assets/vitaliza-logo.png";
 import type { UserRole } from "@/lib/types";
-import { Stethoscope, UserCircle2, Briefcase, KeyRound, Info, X, Check } from "lucide-react";
+import { Stethoscope, UserCircle2, Briefcase, KeyRound, Info, X, Check, Eye, EyeOff } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,6 +62,7 @@ function LoginPage() {
   const [role, setRole] = useState<UserRole>("recepcionista");
   const [email, setEmail] = useState("mariana@vitaliza.com");
   const [password, setPassword] = useState("vitaliza");
+  const [showPassword, setShowPassword] = useState(false);
   const [showCredsModal, setShowCredsModal] = useState(false);
   const [copiedRole, setCopiedRole] = useState<string | null>(null);
 
@@ -175,14 +176,30 @@ function LoginPage() {
 
           <div className="space-y-2">
             <Label htmlFor="password">Senha</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-            />
+            <div className="relative">
+              <Input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="pr-10"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-1 transition-colors rounded-md focus:outline-none"
+                tabIndex={-1}
+                title={showPassword ? "Ocultar senha" : "Ver senha"}
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </button>
+            </div>
           </div>
 
           <div className="flex items-center justify-between text-sm">

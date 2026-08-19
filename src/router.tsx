@@ -1,4 +1,4 @@
-import { createRouter, useRouter } from "@tanstack/react-router";
+import { createRouter, useRouter, createHashHistory } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
@@ -55,10 +55,9 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
 }
 
 export const getRouter = () => {
-  const basepath = import.meta.env.BASE_URL || "/vitaliza-flow";
   const router = createRouter({
     routeTree,
-    basepath: basepath.endsWith('/') && basepath.length > 1 ? basepath.slice(0, -1) : basepath,
+    history: typeof window !== "undefined" ? createHashHistory() : undefined,
     context: {},
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

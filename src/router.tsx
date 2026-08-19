@@ -56,9 +56,10 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
 }
 
 export const getRouter = () => {
+  const basepath = "/vitaliza-flow";
   const router = createRouter({
     routeTree,
-    history: typeof window !== "undefined" ? createHashHistory() : undefined,
+    basepath,
     context: {},
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

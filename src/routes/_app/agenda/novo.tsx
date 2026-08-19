@@ -1,3 +1,4 @@
+import React, { useMemo, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useApp, hasConflict, suggestTimes } from "@/lib/store";
 import { Card } from "@/components/ui/card";
@@ -12,7 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useMemo, useState } from "react";
 import { AlertCircle, Sparkles, ChevronLeft } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";

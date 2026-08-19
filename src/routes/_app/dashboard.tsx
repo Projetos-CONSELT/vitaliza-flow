@@ -1,3 +1,4 @@
+import React from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useApp } from "@/lib/store";
 import { Card } from "@/components/ui/card";

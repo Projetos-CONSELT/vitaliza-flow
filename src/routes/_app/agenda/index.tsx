@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useApp } from "@/lib/store";
 import { Card } from "@/components/ui/card";
@@ -19,8 +20,6 @@ import {
 } from "lucide-react";
 import { addDays, format, startOfWeek } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { useState } from "react";
-
 export const Route = createFileRoute("/_app/agenda/")({
   component: AgendaPage,
 });

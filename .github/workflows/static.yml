@@ -36,7 +36,7 @@ jobs:
         run: npm run build
 
       - name: Copy 404.html for SPA Fallback
-        run: cp dist/index.html dist/404.html
+        run: test -f dist/index.html && cp dist/index.html dist/404.html || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

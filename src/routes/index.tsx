@@ -1,9 +1,9 @@
+import React, { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
 import logo from "@/assets/vitaliza-logo.png";
 import type { UserRole } from "@/lib/types";
 import { Stethoscope, UserCircle2, Briefcase } from "lucide-react";

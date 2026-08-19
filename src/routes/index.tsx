@@ -31,10 +31,11 @@ function LoginPage() {
   const [email, setEmail] = useState("mariana@vitaliza.com");
   const [password, setPassword] = useState("vitaliza");
 
-  if (currentUser) {
-    // Already logged in
-    setTimeout(() => navigate({ to: "/dashboard" }), 0);
-  }
+  React.useEffect(() => {
+    if (currentUser) {
+      navigate({ to: "/dashboard" });
+    }
+  }, [currentUser, navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

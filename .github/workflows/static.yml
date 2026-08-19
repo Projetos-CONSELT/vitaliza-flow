@@ -33,7 +33,29 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build && cp index.html dist/client/index.html && cp dist/client/assets/styles-*.css dist/client/styles.css 2>/dev/null || true
+        run: |
+          npm run build
+          JS_FILE=$(ls dist/client/assets/index-*.js | head -n 1)
+          CSS_FILE=$(ls dist/client/assets/styles-*.css | head -n 1)
+          JS_NAME=$(basename $JS_FILE)
+          CSS_NAME=$(basename $CSS_FILE)
+          cat << 'EOF' > dist/client/index.html
+          <!DOCTYPE html>
+          <html lang="pt-BR">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Vitaliza Fisioterapia — Gestão Clínica</title>
+              <link rel="stylesheet" href="./assets/CSS_PLACEHOLDER" />
+            </head>
+            <body>
+              <div id="root"></div>
+              <script type="module" src="./assets/JS_PLACEHOLDER"></script>
+            </body>
+          </html>
+          EOF
+          sed -i "s/JS_PLACEHOLDER/$JS_NAME/g" dist/client/index.html
+          sed -i "s/CSS_PLACEHOLDER/$CSS_NAME/g" dist/client/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -55,8 +55,10 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
 }
 
 export const getRouter = () => {
+  const basepath = import.meta.env.BASE_URL || "/vitaliza-flow";
   const router = createRouter({
     routeTree,
+    basepath: basepath.endsWith('/') && basepath.length > 1 ? basepath.slice(0, -1) : basepath,
     context: {},
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

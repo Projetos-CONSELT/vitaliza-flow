@@ -33,32 +33,10 @@ jobs:
         run: npm install
 
       - name: Build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        run: |
-          npm run build
-          JS_FILE=$(ls dist/client/assets/index-*.js | head -n 1)
-          CSS_FILE=$(ls dist/client/assets/styles-*.css | head -n 1)
-          JS_NAME=$(basename $JS_FILE)
-          CSS_NAME=$(basename $CSS_FILE)
-          cat << 'EOF' > dist/client/index.html
-          <!DOCTYPE html>
-          <html lang="pt-BR">
-            <head>
-              <meta charset="UTF-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Vitaliza Fisioterapia — Gestão Clínica</title>
-              <link rel="stylesheet" href="./assets/CSS_PLACEHOLDER" />
-            </head>
-            <body>
-              <div id="root"></div>
-              <script type="module" src="./assets/JS_PLACEHOLDER"></script>
-            </body>
-          </html>
-          EOF
-          sed -i "s/JS_PLACEHOLDER/$JS_NAME/g" dist/client/index.html
-          sed -i "s/CSS_PLACEHOLDER/$CSS_NAME/g" dist/client/index.html
+        run: npm run build
+
+      - name: Copy 404.html for SPA Fallback
+        run: cp dist/index.html dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -66,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/client'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment

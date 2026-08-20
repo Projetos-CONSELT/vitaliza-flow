@@ -1,88 +1,89 @@
-# 🌿 Vitaliza Fisioterapia — Flow (Gestão Clínica Digital)
+# 🌿 Vitaliza Fisioterapia — Flow (Projeto Fantasma de Demonstração)
 
-Sistema completo e moderno para gestão clínica de fisioterapia, reabilitação e pilates. Desenvolvido para organizar o fluxo de trabalho de ponta a ponta: desde a recepção e agendamento de pacientes até o acompanhamento do histórico clínico e relatórios gerenciais/financeiros.
+> ⚠️ **Aviso de Projeto Fantasma (MVP / Demonstração):**  
+> Este projeto é uma **aplicação fantasma de demonstração comercial (Mockup Interativo / MVP)** desenvolvida para ilustrar as capacidades de um sistema digital sob medida para clínicas de fisioterapia e reabilitação. Todos os dados, pacientes, agendamentos, profissionais e relatórios financeiros presentes são **fictícios (seeds de simulação)** para fins de validação de interface (UI/UX) e apresentação para clientes.
 
 ---
 
 ## 🚀 Demonstração Online
 
-Acesse o sistema publicado e pronto para uso:
-👉 **[Vitaliza Fisioterapia no GitHub Pages](https://projetos-conselt.github.io/vitaliza-flow/)**
+Acesse o sistema de demonstração interativo publicado e pronto para uso:  
+👉 **[Acessar Vitaliza Flow no GitHub Pages](https://projetos-conselt.github.io/vitaliza-flow/)**
 
 ---
 
-## 🎯 Objetivo e Proposta de Valor
+## 🎯 Objetivo e Proposta da Demonstração
 
-A **Vitaliza Flow** foi projetada para eliminar o uso de planilhas manuais, papel e conflitos de horários em clínicas de fisioterapia. O sistema centraliza:
-1. **Agilidade no Atendimento:** Agendamento rápido com detecção inteligente de conflitos de horários.
-2. **Personalização por Nível de Acesso:** Telas e permissões personalizadas para Recepcionistas, Fisioterapeutas e Gestores.
-3. **Visão Financeira & Gerencial:** Métricas de ocupação, faturamento mensal, faltas e desempenho por profissional.
-4. **Prontuário & Pacientes:** Histórico de consultas, queixas clínicas e contatos em um só lugar.
+O **Vitaliza Flow** foi concebido como um **protótipo funcional de alta fidelidade** com o objetivo de apresentar a diretores e profissionais de saúde como a tecnologia pode transformar uma clínica real, substituindo rotinas manuais, papéis e planilhas por um sistema centralizado, moderno e responsivo.
+
+### Principais Pilares Demonstrados:
+1. **Agilidade no Atendimento:** Agendamento rápido com detecção inteligente de conflitos de horários em tempo real.
+2. **Personalização por Nível de Acesso:** Simulação de interfaces distintas para Recepcionistas, Fisioterapeutas e Gestores.
+3. **Visão Financeira & Gerencial:** Dashboards e gráficos interativos com simulação de métricas de ocupação, faturamento e absenteísmo.
+4. **Prontuário & Pacientes:** Histórico clínico simulado com queixas frequentes e evolução de tratamentos.
 
 ---
 
-## 👥 Perfis de Acesso e Permissões
+## 👥 Perfis de Acesso para Demonstração
 
-O sistema conta com controle de acesso baseado em papéis (*Role-Based Access Control*):
+Para facilitar a apresentação ao cliente, a tela de login possui um **pop-up de credenciais interativo** que permite selecionar qualquer perfil com um único clique:
 
-| Nível de Acesso | Usuário Exemplo | Módulos e Permissões |
+| Nível de Acesso | Usuário Simulado | Módulos e Permissões Visíveis |
 | :--- | :--- | :--- |
 | **👩‍💼 Recepcionista** | `mariana@vitaliza.com` / `vitaliza` | • **Dashboard Geral:** Visão do dia, faltas e horários livres<br>• **Agenda:** Marcação, reagendamento e cancelamento<br>• **Pacientes:** Cadastro rápido e listagem<br>• **Profissionais & Serviços:** Consulta de tabela e horários |
-| **🩺 Fisioterapeuta** | `juliana@vitaliza.com` / `vitaliza` | • **Dashboard Clínico:** Próximos pacientes do dia<br>• **Agenda do Terapeuta:** Visualização semanal e diária<br>• **Prontuário de Pacientes:** Acompanhamento de evolução e notas |
-| **📊 Gestor / Administrador** | `roberto@vitaliza.com` / `vitaliza` | • **Todos os módulos anteriores**<br>• **Relatórios:** Faturamento, gráficos de faturamento por serviço e ocupação<br>• **Configurações:** Horário de funcionamento da clínica e intervalos de atendimento<br>• **Gerenciamento de Profissionais e Serviços:** Valores e durações |
+| **🩺 Fisioterapeuta** | `juliana@vitaliza.com` / `vitaliza` | • **Dashboard Clínico:** Próximos atendimentos do dia<br>• **Agenda do Terapeuta:** Visualização semanal e diária focada em atendimento<br>• **Prontuário de Pacientes:** Acompanhamento de evolução e notas |
+| **📊 Gestor / Administrador** | `roberto@vitaliza.com` / `vitaliza` | • **Todos os módulos anteriores**<br>• **Relatórios:** Gráficos de faturamento por serviço, ocupação e metas<br>• **Configurações:** Horário de funcionamento e intervalos de atendimento<br>• **Gestão de Equipe:** Tabela de preços e profissionais |
 
 ---
 
-## 🛠️ Funcionalidades Principais
+## 🛠️ Funcionalidades Simuladas no Protótipo
 
 ### 1. 📅 Agenda Inteligente & Conflitos
-- Visualização por **Semana** ou por **Dia**.
+- Visualização semanal e diária com dados simulados.
 - Filtro rápido por fisioterapeuta responsável.
 - **Detecção automática de sobreposição:** o sistema impede o agendamento em horários conflitantes para o mesmo profissional.
-- **Sugestão de horários livres:** sugestões automáticas baseadas na duração do procedimento e no expediente da clínica.
+- **Sugestão de horários livres:** algoritmo em JavaScript que calcula janelas de tempo disponíveis no expediente.
 
 ### 2. 👥 Gestão de Pacientes
-- Cadastro completo com telefone, observações clínicas (ex.: hérnia lombar, pós-operatório, tendinites).
-- Histórico de atendimentos realizados e faltas registradas.
+- Base de pacientes fictícios com telefones e queixas simuladas (ex.: hérnia de disco lombar, pós-cirúrgico de joelho, pilates por dor crônica).
 
 ### 3. 💼 Serviços & Procedimentos
-- Gestão de durações (ex.: 50 min, 60 min) e preços de cada procedimento (Fisioterapia Ortopédica, Esportiva, RPG, Pilates Clínico, Atendimento Domiciliar).
+- Catálogo de procedimentos com durações e valores de tabela demonstrativos.
 
 ### 4. 📈 Relatórios & Analytics
-- Gráficos interativos com métricas de desempenho.
-- Comparativos mensais de faturamento e índice de absenteísmo (faltas).
+- Gráficos interativos (Recharts) demonstrando faturamento mensal, serviços mais procurados e taxa de faltas.
 
 ---
 
 ## 🗄️ Estrutura do Banco de Dados (Supabase / PostgreSQL)
 
-O projeto possui integração nativa e arquivos SQL prontos na pasta `supabase/`:
+Mesmo sendo uma demonstração, a arquitetura está preparada para virar um sistema em produção completo com backend **Supabase**:
 
 - `users`: Usuários do sistema e seus níveis de permissão (`recepcionista`, `fisioterapeuta`, `gestor`).
 - `patients`: Cadastro de pacientes e observações clínicas.
-- `professionals`: Especialidades, horários de expediente e cores de identificação na agenda.
-- `services`: Catálogo de procedimentos com tempo de duração e valores.
-- `appointments`: Agendamentos com data, hora, profissional, serviço, paciente e status (`confirmado`, `pendente`, `cancelado`, `falta`, `realizado`).
-- `clinic_settings`: Horários de abertura, fechamento e tamanho padrão dos blocos de horário.
+- `professionals`: Especialidades, horários de expediente e cores na agenda.
+- `services`: Procedimentos, durações e preços.
+- `appointments`: Agendamentos com status (`confirmado`, `pendente`, `cancelado`, `falta`, `realizado`).
+- `clinic_settings`: Horários de funcionamento da clínica.
 
-> 📄 O script completo de criação com permissões RLS (Row Level Security) e dados de demonstração está disponível em [`supabase/schema.sql`](./supabase/schema.sql).
+> 📄 O script SQL com a modelagem relacional completa e dados de teste está disponível em [`supabase/schema.sql`](./supabase/schema.sql).
 
 ---
 
 ## 💻 Tecnologias Utilizadas
 
 - **Frontend:** React 19 + TypeScript
-- **Roteamento:** TanStack Router
-- **Estilização:** Tailwind CSS v4 + Radix UI (Componentes acessíveis)
+- **Roteamento:** TanStack Router (SPA com HTML5 History)
+- **Estilização:** Tailwind CSS v4 + Radix UI
 - **Ícones & Gráficos:** Lucide React & Recharts
-- **Gerenciamento de Estado:** Zustand (com persistência local e suporte a Supabase)
+- **Gerenciamento de Estado:** Zustand (armazenamento local simulado com persistência)
 - **Manipulação de Datas:** Date-fns (pt-BR)
 - **Build Tool:** Vite
 - **Hospedagem & CI/CD:** GitHub Pages + GitHub Actions
 
 ---
 
-## 📦 Como Rodar o Projeto Localmente
+## 📦 Como Executar o Protótipo Localmente
 
 1. **Clone o repositório:**
    ```bash
@@ -95,16 +96,16 @@ O projeto possui integração nativa e arquivos SQL prontos na pasta `supabase/`
    npm install
    ```
 
-3. **Inicie o servidor de desenvolvimento:**
+3. **Inicie o ambiente de desenvolvimento:**
    ```bash
    npm run dev
    ```
 
-4. **Abra no navegador:**
+4. **Acesse no navegador:**
    `http://localhost:5173` ou `http://localhost:8080`
 
 ---
 
-## 📄 Licença & Desenvolvimento
+## 🏢 Sobre o Desenvolvimento
 
-Desenvolvido para a **Clínica Vitaliza Fisioterapia** pela **CONSELT** — Consultoria e Soluções em Engenharia.
+Projeto desenvolvido como **material de demonstração e validação de solução digital** pela **CONSELT** — Consultoria e Soluções em Engenharia.

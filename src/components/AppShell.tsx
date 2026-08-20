@@ -17,15 +17,24 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/vitaliza-logo.png";
 import { useState } from "react";
 
-const navItems = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/agenda", label: "Agenda", icon: CalendarDays },
-  { to: "/pacientes", label: "Pacientes", icon: Users },
-  { to: "/profissionais", label: "Profissionais", icon: Stethoscope },
-  { to: "/servicos", label: "Serviços", icon: ListChecks },
-  { to: "/relatorios", label: "Relatórios", icon: BarChart3 },
-  { to: "/configuracoes", label: "Configurações", icon: Settings },
-] as const;
+type AllowedRole = UserRole;
+
+interface NavItem {
+  to: string;
+  label: string;
+  icon: typeof LayoutDashboard;
+  roles: AllowedRole[];
+}
+
+const navItems: NavItem[] = [
+  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, roles: ["recepcionista", "fisioterapeuta", "gestor"] },
+  { to: "/agenda", label: "Agenda", icon: CalendarDays, roles: ["recepcionista", "fisioterapeuta", "gestor"] },
+  { to: "/pacientes", label: "Pacientes", icon: Users, roles: ["recepcionista", "fisioterapeuta", "gestor"] },
+  { to: "/profissionais", label: "Profissionais", icon: Stethoscope, roles: ["recepcionista", "gestor"] },
+  { to: "/servicos", label: "Serviços", icon: ListChecks, roles: ["recepcionista", "gestor"] },
+  { to: "/relatorios", label: "Relatórios", icon: BarChart3, roles: ["gestor"] },
+  { to: "/configuracoes", label: "Configurações", icon: Settings, roles: ["gestor"] },
+];
 
 export function AppShell() {
   const { currentUser, logout } = useApp();
@@ -37,6 +46,10 @@ export function AppShell() {
     logout();
     navigate({ to: "/" });
   };
+
+  const visibleNavItems = navItems.filter(
+    (item) => !currentUser || item.roles.includes(currentUser.role)
+  );
 
   const SidebarContent = () => (
     <>
@@ -50,8 +63,23 @@ export function AppShell() {
         </div>
       </div>
 
-      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-        {navItems.map(({ to, label, icon: Icon }) => {
+      {currentUser && (
+        <div className="px-4 py-2">
+          <div className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center justify-between ${
+            currentUser.role === "gestor"
+              ? "bg-primary/15 text-primary border border-primary/20"
+              : currentUser.role === "fisioterapeuta"
+              ? "bg-secondary-soft text-secondary-foreground border border-secondary/30"
+              : "bg-muted text-muted-foreground border border-border"
+          }`}>
+            <span>Acesso: {currentUser.role}</span>
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
+        </div>
+      )}
+
+      <nav className="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
+        {visibleNavItems.map(({ to, label, icon: Icon }) => {
           const active = location.pathname === to || location.pathname.startsWith(to + "/");
           return (
             <Link
